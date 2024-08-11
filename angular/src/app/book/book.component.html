@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Danh sách sách</h2>
+  <button class="btn btn-primary mb-3" (click)="openModal()"><i class="fa-solid fa-square-plus"></i>Thêm sách mới</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tên sách</th>
+        <th>Loại</th>
+        <th>Ngày xuất bản</th>
+        <th>Giá</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of book.items">
+        <td>{{ book.name }}</td>
+        <td>{{ getBookTypeName(book.type) }}</td> <!-- Sử dụng phương thức trong component -->
+        <td>{{ book.publishDate | date }}</td>
+        <td>{{ book.price | currency }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="openModal(book)"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id)"><i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Modal Template -->
+  <ng-template #bookModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">{{ currentBookId ? 'Sửa sách' : 'Thêm sách mới' }}</h4>
+      <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form" (ngSubmit)="save(modal)">
+        <div class="mb-3">
+          <label for="name" class="form-label">Tên sách</label>
+          <input id="name" type="text" class="form-control" formControlName="name" />
+        </div>
+        <div class="mb-3">
+          <label for="type" class="form-label">Loại</label>
+          <select id="type" class="form-control" formControlName="type">
+            <option *ngFor="let type of bookTypes" [value]="type.value">{{ type.key }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="publishDate" class="form-label">Ngày xuất bản</label>
+          <input id="publishDate" type="date" class="form-control" formControlName="publishDate" />
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Giá</label>
+          <input id="price" type="number" class="form-control" formControlName="price" />
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+          {{ currentBookId ? 'Lưu thay đổi' : 'Thêm mới' }}
+        </button>
+      </form>
+    </div>
+  </ng-template>
+</div>

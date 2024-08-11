@@ -10,9 +10,22 @@ function configureRoutes(routes: RoutesService) {
     routes.add([
       {
         path: '/',
-        name: '::Menu:Home',
+        name: 'Home',
         iconClass: 'fas fa-home',
         order: 1,
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/book-store',
+        name: 'BookStore',
+        iconClass: 'fas fa-book',
+        order: 2,
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/books',
+        name: 'Books',
+        parentName:'BookStore',
         layout: eLayoutType.application,
       },
     ]);
