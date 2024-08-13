@@ -1,2 +1,4 @@
 import * as Books from './books';
-export { Books };
+import * as Categories from './categories';
+import * as Microsoft from './microsoft';
+export { Books, Categories, Microsoft };
