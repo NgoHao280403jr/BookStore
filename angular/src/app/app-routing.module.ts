@@ -30,7 +30,9 @@ const routes: Routes = [
     path: 'books',
     loadChildren: () => import('./book/book.module').then(m => m.BookModule), // Đảm bảo bạn có BooksModule
   },
-  { path: 'categories', loadChildren: () => import('./category/category.module').then(m => m.CategoryModule) },
+  { path: 'categories', 
+    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+  },
 ];
 
 @NgModule({

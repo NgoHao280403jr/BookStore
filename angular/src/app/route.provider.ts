@@ -27,7 +27,12 @@ function configureRoutes(routes: RoutesService) {
         name: 'Books',
         parentName:'BookStore',
         layout: eLayoutType.application,
-      },
+      }, {
+        path: '/categories',
+        name: 'CategoryBook',
+        parentName:'BookStore',
+        layout: eLayoutType.application,
+      }, 
     ]);
   };
 }

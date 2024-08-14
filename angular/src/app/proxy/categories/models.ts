@@ -1,4 +1,4 @@
-
+import type { AuditedEntityDto } from '@abp/ng.core';
 export interface CategoryDto {
   id?: string;
   name?: string;

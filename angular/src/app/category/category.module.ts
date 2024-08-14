@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from './category.component';
-
+import { SharedModule} from '../shared/shared.module';
+import{NgbDatepickerModule}from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,9 @@ import { CategoryComponent } from './category.component';
   ],
   imports: [
     CommonModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    SharedModule,
+    NgbDatepickerModule
   ]
 })
 export class CategoryModule { }
